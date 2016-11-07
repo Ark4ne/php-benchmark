@@ -17,6 +17,7 @@ ab -c 10 -t 10 -l
   * PHP 7.0.8-0ubuntu0.16.04.3 (fpm-fcgi)
     * Zend OPcache v7.0.8-0ubuntu0.16.04.3
   * nginx/1.10.0
+
 ### Hardware
 * Virtual Machine on VMWare
 * 4 vCore, Hardware CPU: i7-6700HQ 6M Cache, up to 3.50 GHz 4 cores 8 threads
