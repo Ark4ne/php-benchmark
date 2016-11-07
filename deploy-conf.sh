@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Allow write in .datas"
+chmod 777 -R .datas/
+
+echo "Add hosts"
+
 echo "Deploy nginx conf"
 cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.old
 cp ./php-benchmark/config/nginx-site-available /etc/nginx/sites-available/default

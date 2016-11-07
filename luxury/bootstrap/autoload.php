@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 
-define('APP_ENV', 'development');
+define('APP_ENV', 'production');
 
 /**
  * Read auto-loader

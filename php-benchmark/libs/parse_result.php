@@ -20,4 +20,4 @@ while (!feof($handle)) {
     }
 }
 
-file_put_contents(__DIR__ . '/../output/' . $fw . '.json', json_encode($datas, JSON_PRETTY_PRINT));
+file_put_contents(__DIR__ . '/../../.datas/' . $fw . '.json', json_encode($datas, JSON_PRETTY_PRINT));

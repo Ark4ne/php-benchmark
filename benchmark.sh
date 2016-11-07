@@ -12,7 +12,7 @@ bench(){
     cd ./"$fw"
 
     echo "Composer update & optimize"
-    composer update --no-dev > /dev/null 2> /dev/null
+    sh update.sh > /dev/null 2> /dev/null
 
     echo "php-fpm restart (reset opache)"
     service php7.0-fpm restart
@@ -20,6 +20,7 @@ bench(){
     echo "bench..."
     ab -c 10 -t 10 -l http://"$fw".bench.com/ > "$ab_log" 2> /dev/null
 
+    cd ./../
     php ./php-benchmark/libs/parse_result.php "$fw"
     php ./php-benchmark/libs/display_result.php "$fw"
 }

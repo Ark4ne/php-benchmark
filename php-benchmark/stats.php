@@ -2,7 +2,7 @@
 global $framework;
 
 file_put_contents(
-    __DIR__ . '/../../.datas/' . $framework . '.log',
+    __DIR__ . '/../.datas/' . $framework . '.log',
     serialize([
         'm' => memory_get_usage(),
         'p' => memory_get_peak_usage(),
