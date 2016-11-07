@@ -11,3 +11,9 @@ $kernel
     ->modules()
     ->run('main')
     ->render();
+
+global $framework;
+
+$framework = 'slayer';
+
+require __DIR__ . '/../../php-benchmark/stats.php';

@@ -20,3 +20,9 @@ try {
     echo $e->getMessage() . '<br>';
     echo '<pre>' . $e->getTraceAsString() . '</pre>';
 }
+
+global $framework;
+
+$framework = 'luxury';
+
+require __DIR__ . '/../../php-benchmark/stats.php';
