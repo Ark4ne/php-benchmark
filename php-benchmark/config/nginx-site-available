@@ -1,0 +1,197 @@
+
+server {
+	listen 80;
+
+	root /var/www/php-benchmark/invo/public;
+
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name invo.bench.com;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    access_log off;
+    error_log  /var/log/nginx/invo.app-error.log error;
+
+    sendfile off;
+
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+        # regex to split $uri to $fastcgi_script_name and $fastcgi_path
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+}
+
+server {
+	listen 80;
+
+	root /var/www/php-benchmark/laravel/public;
+
+	# Add index.php to the list if you are using PHP
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name laravel.bench.com;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    access_log off;
+    error_log  /var/log/nginx/laravel.app-error.log error;
+
+    sendfile off;
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+        # regex to split $uri to $fastcgi_script_name and $fastcgi_path
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+}
+
+server {
+	listen 80;
+
+	server_name slayer.bench.com;
+
+    root /var/www/php-benchmark/slayer/public;
+
+    index index.html index.htm index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/slayer.app-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+        # regex to split $uri to $fastcgi_script_name and $fastcgi_path
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+server {
+	listen 80;
+
+	server_name luxury.bench.com;
+
+    root "/var/www/php-benchmark/luxury/public";
+
+    index index.html index.htm index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/luxury.app-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+        # regex to split $uri to $fastcgi_script_name and $fastcgi_path
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+server {
+	listen 80;
+
+	server_name lumen.bench.com;
+
+    root "/var/www/php-benchmark/lumen/public";
+
+    index index.html index.htm index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/lumen.app-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+        # regex to split $uri to $fastcgi_script_name and $fastcgi_path
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
