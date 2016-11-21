@@ -26,9 +26,3 @@ $app = require __DIR__.'/../bootstrap/app.php';
 */
 
 $app->run();
-
-global $framework;
-
-$framework = 'lumen';
-
-require __DIR__ . '/../../php-benchmark/stats.php';
