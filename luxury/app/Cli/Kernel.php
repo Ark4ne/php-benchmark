@@ -3,12 +3,11 @@
 namespace App\Cli;
 
 use App\Providers\SomeApiServices as SomeApiProvider;
-use Luxury\Foundation\Kernel\Cli as CliApplication;
+use Luxury\Foundation\Cli\Kernel as CliKernel;
 use Luxury\Foundation\Middleware\Debug as DebugMiddleware;
 use Luxury\Providers\Cli\Dispatcher as DispatcherProvider;
 use Luxury\Providers\Cli\Router as RouterProvider;
 use Luxury\Providers\Database as DatabaseProvider;
-use Luxury\Providers\HttpClient as HttpClientProvider;
 use Luxury\Providers\Logger as LoggerProvider;
 
 /**
@@ -16,7 +15,7 @@ use Luxury\Providers\Logger as LoggerProvider;
  *
  * @package App\Http\Controllers
  */
-class Kernel extends CliApplication
+class Kernel extends CliKernel
 {
     /**
      * Return the Provider List to load.
@@ -42,11 +41,6 @@ class Kernel extends CliApplication
         \Luxury\Providers\Crypt::class,
         \Luxury\Providers\Annotations::class,
         /**/
-
-        /*
-         * Http Client
-         */
-        HttpClientProvider::class,
 
         /*
          * SomeApi Service

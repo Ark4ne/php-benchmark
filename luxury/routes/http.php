@@ -22,13 +22,29 @@ Router::addGet('/', [
     'controller' => 'index',
     'action'     => 'index'
 ]);
-
-Router::addGet('/signin', [
+/*
+Router::addGet('/register', [
     'controller' => 'auth',
-    'action'     => 'signin'
+    'action'     => 'register'
+]);
+
+Router::addPost('/register', [
+    'controller' => 'auth',
+    'action'     => 'postRegister'
+]);
+
+Router::addGet('/login', [
+    'controller' => 'auth',
+    'action'     => 'login'
 ]);
 
 Router::addPost('/login', [
     'controller' => 'auth',
-    'action'     => 'login'
+    'action'     => 'postLogin'
 ]);
+
+Router::addGet('/logout', [
+    'controller' => 'auth',
+    'action'     => 'logout'
+]);
+*/

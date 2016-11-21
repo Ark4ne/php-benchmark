@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Phalcon\Mvc\Model;
+use Phalcon\Db\Column;
 
 /**
  * Class User
  *
  * @package Models
  */
-class User extends Model
+class User extends \Luxury\Foundation\Auth\User
 {
+    use Viewable;
 
     /**
      * @var integer
@@ -28,12 +29,31 @@ class User extends Model
     public $email;
 
     /**
-     * Returns table name mapped in the model.
-     *
-     * @return string
+     * @var string
      */
-    public function getSource()
+    public $password;
+
+    /**
+     * @var string
+     */
+    public $remember_token;
+
+    /**
+     * Initializes metaDatas & columnsMap if they are not.
+     */
+    public function initialize()
     {
-        return 'users';
+        parent::initialize();
+
+        $this->setSource("users");
+
+        $this->primary('id', Column::TYPE_INTEGER);
+
+        $this->column('name', Column::TYPE_VARCHAR);
+        $this->column('email', Column::TYPE_VARCHAR);
+        $this->column('password', Column::TYPE_VARCHAR);
+        $this->column('remember_token', Column::TYPE_VARCHAR, [
+            'nullable' => true
+        ]);
     }
 }

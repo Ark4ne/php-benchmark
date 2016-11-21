@@ -3,14 +3,13 @@
 namespace App\Http;
 
 use App\Providers\SomeApiServices as SomeApiProvider;
-use Luxury\Foundation\Kernel\Http as HttpApplication;
+use Luxury\Foundation\Http\Kernel as HttpKernel;
 use Luxury\Providers\Auth as AuthProvider;
 use Luxury\Providers\Cache as CacheProvider;
 use Luxury\Providers\Database as DatabaseProvider;
 use Luxury\Providers\Flash as FlashProvider;
 use Luxury\Providers\Http\Dispatcher as DispatcherProvider;
 use Luxury\Providers\Http\Router as RouterProvider;
-use Luxury\Providers\HttpClient as HttpClientProvider;
 use Luxury\Providers\Logger as LoggerProvider;
 use Luxury\Providers\Session as SessionProvider;
 use Luxury\Providers\Url as UrlProvider;
@@ -21,7 +20,7 @@ use Luxury\Providers\View as ViewProvider;
  *
  * @package App\Http\Controllers
  */
-class Kernel extends HttpApplication
+class Kernel extends HttpKernel
 {
     /**
      * Return the Provider List to load.
@@ -41,6 +40,7 @@ class Kernel extends HttpApplication
         DispatcherProvider::class,
         DatabaseProvider::class,
         CacheProvider::class,
+
         /*
          * Service provided by the Phalcon\Di\FactoryDefault
          *
@@ -52,11 +52,6 @@ class Kernel extends HttpApplication
         \Luxury\Providers\Crypt::class,
         \Luxury\Providers\Annotations::class,
         /**/
-
-        /*
-         * Http Client
-         */
-        HttpClientProvider::class,
 
         /*
          * Auth Service
