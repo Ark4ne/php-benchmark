@@ -56,9 +56,3 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
-
-global $framework;
-
-$framework = 'laravel';
-
-require __DIR__ . '/../../php-benchmark/stats.php';
