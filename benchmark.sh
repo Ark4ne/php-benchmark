@@ -4,7 +4,6 @@ mkdir ./.datas > /dev/null 2> /dev/null
 rm ./.datas/*.* > /dev/null 2> /dev/null
 
 bench(){
-
     fw="$1"
     echo "$fw"
     ab_log="/var/www/php-benchmark/.datas/$fw.ab.log"
@@ -21,13 +20,26 @@ bench(){
     ab -c 10 -t 10 -l http://"$fw".bench.com/ > "$ab_log" 2> /dev/null
 
     cd ./../
+    php ./php-benchmark/libs/display_ab_result.php "$fw"
+}
+
+display_stats(){
+    fw="$1"
+
     php ./php-benchmark/libs/parse_result.php "$fw"
     php ./php-benchmark/libs/display_result.php "$fw"
 }
 
 echo "Benchmark"
-
+ln -s ./php-benchmark/config/nginx-site-available /etc/nginx/sites-enabled/default
 for var in "$@"
 do
     bench $var
+done
+
+ln -s ./php-benchmark/config/nginx-site-available-stats /etc/nginx/sites-enabled/default
+for var in "$@"
+do
+    bench $var
+    display_stats $var
 done

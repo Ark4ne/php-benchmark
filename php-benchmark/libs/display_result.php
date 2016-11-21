@@ -31,9 +31,6 @@ function value_time($name, $value)
 
 $framework = $argv[1];
 
-//$frameworks = ['invo', 'slayer', 'laravel', 'phalcon'];
-
-//foreach ($frameworks as $framework) {
 $path = __DIR__ . '/../../.datas/' . $framework;
 
 $data_requests = json_decode(file_get_contents($path . '.json'), true);
@@ -83,13 +80,7 @@ foreach ($data_requests as $data_request) {
     }
 }
 
-$ab_log = file_get_contents($path . '.ab.log');
-preg_match('/Requests per second:\s+([\d.]+)/', $ab_log, $requests_sec);
-preg_match('/Failed requests:\s+([\d.]+)/', $ab_log, $failed);
-
 line('', '-');
-value('requests/sec', $requests_sec[1]);
-value('Failed', $failed[1]);
 value_time('avg. time', $total_time / $total_request);
 value_time('min time', $min_time);
 value_time('max time', $max_time);
